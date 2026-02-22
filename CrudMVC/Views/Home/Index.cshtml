@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container py-5">
+
+    <!-- Hero Section -->
+    <div class="row align-items-center justify-content-center text-center mb-5">
+        <div class="col-lg-8">
+            <h1 class="display-4 fw-bold mb-3">Welcome to Our ASP.NET Core App 🚀</h1>
+            <p class="lead text-muted mb-4">
+                Learn and build modern, responsive web apps with <strong>ASP.NET Core</strong> — fast, secure, and scalable.
+            </p>
+            <a href="https://learn.microsoft.com/aspnet/core" target="_blank" class="btn btn-primary btn-lg rounded-3 me-2">
+                Learn More
+            </a>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary btn-lg rounded-3">
+                Get Started
+            </a>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0 rounded-4 h-100 p-4">
+                <i class="fa fa-cogs fa-2x mb-3 text-primary"></i>
+                <h5 class="fw-bold mb-2">Easy Setup</h5>
+                <p class="text-muted">Quickly scaffold projects and start building without hassle.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0 rounded-4 h-100 p-4">
+                <i class="fa fa-lock fa-2x mb-3 text-primary"></i>
+                <h5 class="fw-bold mb-2">Secure by Default</h5>
+                <p class="text-muted">Identity, authentication, and authorization built in.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0 rounded-4 h-100 p-4">
+                <i class="fa fa-mobile fa-2x mb-3 text-primary"></i>
+                <h5 class="fw-bold mb-2">Responsive Design</h5>
+                <p class="text-muted">Mobile-friendly and looks great on all devices.</p>
+            </div>
+        </div>
+    </div>
+
+
+</div>

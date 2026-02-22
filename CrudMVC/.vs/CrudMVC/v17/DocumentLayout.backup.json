@@ -1,0 +1,201 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\USER\\Downloads\\CrudMVC\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|c:\\users\\user\\downloads\\crudmvc\\services\\iemailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|solutionrelative:services\\iemailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|c:\\users\\user\\downloads\\crudmvc\\models\\responsevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|solutionrelative:models\\responsevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|c:\\users\\user\\downloads\\crudmvc\\views\\account\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|solutionrelative:views\\account\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|c:\\users\\user\\downloads\\crudmvc\\views\\account\\forgetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|solutionrelative:views\\account\\forgetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|c:\\users\\user\\downloads\\crudmvc\\controllers\\authentication\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|solutionrelative:controllers\\authentication\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|c:\\users\\user\\downloads\\crudmvc\\views\\account\\forgetpasswordconfirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|solutionrelative:views\\account\\forgetpasswordconfirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|c:\\users\\user\\downloads\\crudmvc\\services\\emailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|solutionrelative:services\\emailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|c:\\users\\user\\downloads\\crudmvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|c:\\users\\user\\downloads\\crudmvc\\controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|solutionrelative:controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|c:\\users\\user\\downloads\\crudmvc\\models\\entities\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|solutionrelative:models\\entities\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|c:\\users\\user\\downloads\\crudmvc\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|solutionrelative:views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ResetPassword.cshtml",
+              "DocumentMoniker": "C:\\Users\\USER\\Downloads\\CrudMVC\\Views\\Account\\ResetPassword.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\ResetPassword.cshtml",
+              "ToolTip": "C:\\Users\\USER\\Downloads\\CrudMVC\\Views\\Account\\ResetPassword.cshtml",
+              "RelativeToolTip": "Views\\Account\\ResetPassword.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-18T06:19:05.542Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ForgetPasswordConfirmation.cshtml",
+              "DocumentMoniker": "C:\\Users\\USER\\Downloads\\CrudMVC\\Views\\Account\\ForgetPasswordConfirmation.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\ForgetPasswordConfirmation.cshtml",
+              "ToolTip": "C:\\Users\\USER\\Downloads\\CrudMVC\\Views\\Account\\ForgetPasswordConfirmation.cshtml",
+              "RelativeToolTip": "Views\\Account\\ForgetPasswordConfirmation.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-18T06:06:31.593Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ForgetPassword.cshtml",
+              "DocumentMoniker": "C:\\Users\\USER\\Downloads\\CrudMVC\\Views\\Account\\ForgetPassword.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\ForgetPassword.cshtml",
+              "ToolTip": "C:\\Users\\USER\\Downloads\\CrudMVC\\Views\\Account\\ForgetPassword.cshtml",
+              "RelativeToolTip": "Views\\Account\\ForgetPassword.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-17T05:15:18.021Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Downloads\\CrudMVC\\Controllers\\Authentication\\AccountController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Authentication\\AccountController.cs",
+              "ToolTip": "C:\\Users\\USER\\Downloads\\CrudMVC\\Controllers\\Authentication\\AccountController.cs",
+              "RelativeToolTip": "Controllers\\Authentication\\AccountController.cs",
+              "ViewState": "AgIAAIUAAAAAAAAAAAAqwH8AAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-16T06:00:15.221Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EmailSender.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Downloads\\CrudMVC\\Services\\EmailSender.cs",
+              "RelativeDocumentMoniker": "Services\\EmailSender.cs",
+              "ToolTip": "C:\\Users\\USER\\Downloads\\CrudMVC\\Services\\EmailSender.cs",
+              "RelativeToolTip": "Services\\EmailSender.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-17T06:47:41.92Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IEmailSender.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Downloads\\CrudMVC\\Services\\IEmailSender.cs",
+              "RelativeDocumentMoniker": "Services\\IEmailSender.cs",
+              "ToolTip": "C:\\Users\\USER\\Downloads\\CrudMVC\\Services\\IEmailSender.cs",
+              "RelativeToolTip": "Services\\IEmailSender.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T05:22:37.88Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ResponseVM.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Downloads\\CrudMVC\\Models\\ResponseVM.cs",
+              "RelativeDocumentMoniker": "Models\\ResponseVM.cs",
+              "ToolTip": "C:\\Users\\USER\\Downloads\\CrudMVC\\Models\\ResponseVM.cs",
+              "RelativeToolTip": "Models\\ResponseVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T05:54:16.233Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Downloads\\CrudMVC\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\USER\\Downloads\\CrudMVC\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABkAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-16T12:28:08.729Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\USER\\Downloads\\CrudMVC\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\Login.cshtml",
+              "ToolTip": "C:\\Users\\USER\\Downloads\\CrudMVC\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "Views\\Account\\Login.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-17T04:57:01.3Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Student.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Downloads\\CrudMVC\\Models\\Entities\\Student.cs",
+              "RelativeDocumentMoniker": "Models\\Entities\\Student.cs",
+              "ToolTip": "C:\\Users\\USER\\Downloads\\CrudMVC\\Models\\Entities\\Student.cs",
+              "RelativeToolTip": "Models\\Entities\\Student.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-17T08:20:08.029Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "StudentsController.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Downloads\\CrudMVC\\Controllers\\StudentsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\StudentsController.cs",
+              "ToolTip": "C:\\Users\\USER\\Downloads\\CrudMVC\\Controllers\\StudentsController.cs",
+              "RelativeToolTip": "Controllers\\StudentsController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowAoAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-17T08:21:04.348Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

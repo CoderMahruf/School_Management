@@ -1,0 +1,43 @@
+﻿@model List<CrudMVC.Models.Entities.Student>
+
+@{
+    ViewData["Title"] = "Student List";
+}
+
+<h2>Student List</h2>
+
+<a asp-action="Add" class="btn btn-primary mb-3">Add New Student</a>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var student in Model)
+            {
+                <tr>
+                    <td>@student.Id</td>
+                    <td>@student.Name</td>
+                    <td>@student.Email</td>
+                    <td>@student.Phone</td>
+                    <td>
+                        <a asp-action="Edit" asp-controller="Students" asp-route-id="@student.Id" class="btn btn-sm> btn-warning">Edit</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4" class="text-center">No Students Found</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<CrudMVC.Areas.Admin.Models.UserVM>
+@{
+    ViewData["Title"] = "User Management";
+}
+
+<h2 class="mb-4">User Management</h2>
+
+<table class="table table-bordered table-striped shadow">
+    <thead class="table-dark">
+        <tr>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Roles</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>@user.FirstName @user.LastName</td>
+                <td>@user.Roles</td>
+                <td>
+                    <form asp-area="Admin"
+                          asp-controller="Users"
+                          asp-action="Delete"
+                          method="post"
+                          style="display:inline;">
+                        <input type="hidden" name="id" value="@user.Id" />
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">
+                            Delete
+                        </button>
+                        @Html.AntiForgeryToken()
+                    </form>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
