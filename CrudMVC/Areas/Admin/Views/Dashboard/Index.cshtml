@@ -2,44 +2,322 @@
     ViewData["Title"] = "Admin Dashboard";
 }
 
-<h2 class="mb-4">Admin Dashboard</h2>
 
-<div class="row">
 
-    <div class="col-md-3 mb-3">
-        <div class="card text-white bg-primary shadow">
-            <div class="card-body">
-                <h5>Total Users</h5>
-                <h3>@ViewBag.TotalUsers</h3>
+<!--begin::App Main-->
+<main class="app-main">
+    <!--begin::App Content Header-->
+    <div class="app-content-header">
+        <!--begin::Container-->
+        <div class="container-fluid">
+            <!--begin::Row-->
+            <div class="row">
+                <div class="col-sm-6"><h3 class="mb-0">Dashboard v2</h3></div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-end">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Dashboard v2</li>
+                    </ol>
+                </div>
             </div>
+            <!--end::Row-->
         </div>
+        <!--end::Container-->
     </div>
-
-    <div class="col-md-3 mb-3">
-        <div class="card text-white bg-success shadow">
-            <div class="card-body">
-                <h5>Total Students</h5>
-                <h3>@ViewBag.TotalStudents</h3>
+    <div class="app-content">
+        <!--begin::Container-->
+        <div class="container-fluid">
+            <!-- Info boxes -->
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box">
+                        <span class="info-box-icon text-bg-primary shadow-sm">
+                            <i class="bi bi-gear-fill"></i>
+                        </span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">CPU Traffic</span>
+                            <span class="info-box-number">
+                                10
+                                <small>%</small>
+                            </span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box">
+                        <span class="info-box-icon text-bg-danger shadow-sm">
+                            <i class="bi bi-hand-thumbs-up-fill"></i>
+                        </span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Likes</span>
+                            <span class="info-box-number">41,410</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                <!-- fix for small devices only -->
+                <!-- <div class="clearfix hidden-md-up"></div> -->
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box">
+                        <span class="info-box-icon text-bg-success shadow-sm">
+                            <i class="bi bi-cart-fill"></i>
+                        </span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Sales</span>
+                            <span class="info-box-number">760</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box">
+                        <span class="info-box-icon text-bg-warning shadow-sm">
+                            <i class="bi bi-people-fill"></i>
+                        </span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">New Members</span>
+                            <span class="info-box-number">2,000</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
             </div>
-        </div>
-    </div>
-
-    <div class="col-md-3 mb-3">
-        <div class="card text-white bg-warning shadow">
-            <div class="card-body">
-                <h5>Total Teachers</h5>
-                <h3>@ViewBag.TotalTeachers</h3>
+            <!-- /.row -->
+            
+            <!--begin::Row-->
+            <div class="row">
+                <!-- Start col -->
+                <div class="col-md-8">
+                    <!--begin::Row-->
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-6">
+                           
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-6">
+                            
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!--end::Row-->
+                    <!--begin::Latest Order Widget-->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Latest Orders</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse">
+                                    <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
+                                    <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-lte-toggle="card-remove">
+                                    <i class="bi bi-x-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table m-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Order ID</th>
+                                            <th>Item</th>
+                                            <th>Status</th>
+                                            <th>Popularity</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <a href="pages/examples/invoice.html"
+                                                   class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">OR9842</a>
+                                            </td>
+                                            <td>Call of Duty IV</td>
+                                            <td><span class="badge text-bg-success"> Shipped </span></td>
+                                            <td><div id="table-sparkline-1"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="pages/examples/invoice.html"
+                                                   class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">OR1848</a>
+                                            </td>
+                                            <td>Samsung Smart TV</td>
+                                            <td><span class="badge text-bg-warning">Pending</span></td>
+                                            <td><div id="table-sparkline-2"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="pages/examples/invoice.html"
+                                                   class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">OR7429</a>
+                                            </td>
+                                            <td>iPhone 6 Plus</td>
+                                            <td><span class="badge text-bg-danger"> Delivered </span></td>
+                                            <td><div id="table-sparkline-3"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="pages/examples/invoice.html"
+                                                   class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">OR7429</a>
+                                            </td>
+                                            <td>Samsung Smart TV</td>
+                                            <td><span class="badge text-bg-info">Processing</span></td>
+                                            <td><div id="table-sparkline-4"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="pages/examples/invoice.html"
+                                                   class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">OR1848</a>
+                                            </td>
+                                            <td>Samsung Smart TV</td>
+                                            <td><span class="badge text-bg-warning">Pending</span></td>
+                                            <td><div id="table-sparkline-5"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="pages/examples/invoice.html"
+                                                   class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">OR7429</a>
+                                            </td>
+                                            <td>iPhone 6 Plus</td>
+                                            <td><span class="badge text-bg-danger"> Delivered </span></td>
+                                            <td><div id="table-sparkline-6"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="pages/examples/invoice.html"
+                                                   class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">OR9842</a>
+                                            </td>
+                                            <td>Call of Duty IV</td>
+                                            <td><span class="badge text-bg-success">Shipped</span></td>
+                                            <td><div id="table-sparkline-7"></div></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer clearfix">
+                            <a href="javascript:void(0)" class="btn btn-sm btn-primary float-start">
+                                Place New Order
+                            </a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-end">
+                                View All Orders
+                            </a>
+                        </div>
+                        <!-- /.card-footer -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-4">
+                    <!-- Info Boxes Style 2 -->
+                    <div class="info-box mb-3 text-bg-warning">
+                        <span class="info-box-icon"> <i class="bi bi-tag-fill"></i> </span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Inventory</span>
+                            <span class="info-box-number">5,200</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                    <div class="info-box mb-3 text-bg-success">
+                        <span class="info-box-icon"> <i class="bi bi-heart-fill"></i> </span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Mentions</span>
+                            <span class="info-box-number">92,050</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                    <div class="info-box mb-3 text-bg-danger">
+                        <span class="info-box-icon"> <i class="bi bi-cloud-download"></i> </span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Downloads</span>
+                            <span class="info-box-number">114,381</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                    <div class="info-box mb-3 text-bg-info">
+                        <span class="info-box-icon"> <i class="bi bi-chat-fill"></i> </span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Direct Messages</span>
+                            <span class="info-box-number">163,921</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="card-title">Browser Usage</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse">
+                                    <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
+                                    <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-lte-toggle="card-remove">
+                                    <i class="bi bi-x-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <!--begin::Row-->
+                            <div class="row">
+                                <div class="col-12"><div id="pie-chart"></div></div>
+                                <!-- /.col -->
+                            </div>
+                            <!--end::Row-->
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer p-0">
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        United States of America
+                                        <span class="float-end text-danger">
+                                            <i class="bi bi-arrow-down fs-7"></i>
+                                            12%
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        India
+                                        <span class="float-end text-success">
+                                            <i class="bi bi-arrow-up fs-7"></i> 4%
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        China
+                                        <span class="float-end text-info">
+                                            <i class="bi bi-arrow-left fs-7"></i> 0%
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.footer -->
+                    </div>
+                    
+                </div>
+                <!-- /.col -->
             </div>
+            <!--end::Row-->
         </div>
+        <!--end::Container-->
     </div>
-
-    <div class="col-md-3 mb-3">
-        <div class="card text-white bg-danger shadow">
-            <div class="card-body">
-                <h5>Total Admins</h5>
-                <h3>@ViewBag.TotalAdmins</h3>
-            </div>
-        </div>
-    </div>
-
-</div>
+    <!--end::App Content-->
+</main>
+<!--end::App Main-->
