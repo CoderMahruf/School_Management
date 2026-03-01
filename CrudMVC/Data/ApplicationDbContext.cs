@@ -10,6 +10,8 @@ namespace CrudMVC.Data
         {
             
         }
+        public DbSet<Class> Classes { get; set; }
         public DbSet<Student> Students { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
     }
 }

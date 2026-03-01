@@ -13,7 +13,7 @@ namespace CrudMVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20260215131123_initil")]
-    partial class initil
+    public partial class Initil
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

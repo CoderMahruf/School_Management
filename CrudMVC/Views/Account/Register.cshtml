@@ -16,7 +16,7 @@
         <!-- Body -->
         <div class="card-body p-5">
 
-            <form asp-action="Register" asp-controller="Account" method="post">
+            <form asp-action="Register" asp-controller="Account" method="post" enctype="multipart/form-data">
 
                 <div asp-validation-summary="All" class="text-danger mb-3"></div>
 
@@ -44,6 +44,12 @@
                     <input asp-for="LastName" class="form-control rounded-3" placeholder="name@example.com" />
                     <label asp-for="LastName">Last Name</label>
                     <span asp-validation-for="LastName" class="text-danger small"></span>
+                </div>
+                <!-- Image -->
+                <div class="form-floating mb-3">
+                    <input asp-for="ImageFile" class="form-control rounded-3" placeholder="name@example.com" />
+                    <label asp-for="ImageFile">Profile Image</label>
+                    <span asp-validation-for="ImageFile" class="text-danger small"></span>
                 </div>
                 <!-- Email -->
                 <div class="form-floating mb-3">

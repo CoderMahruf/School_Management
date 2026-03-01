@@ -16,14 +16,16 @@ namespace CrudMVC.Controllers.Authentication
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly Services.IEmailSender _emailSender;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager, Services.IEmailSender emailSender)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager, Services.IEmailSender emailSender, IWebHostEnvironment hostEnvironment)
         {
 
             this._userManager = userManager;
             this._signInManager = signInManager;
             this._roleManager = roleManager;
             this._emailSender = emailSender;
+            this._hostEnvironment = hostEnvironment;
         }
         public IActionResult Index()
         {
@@ -49,13 +51,32 @@ namespace CrudMVC.Controllers.Authentication
                 return View(model);
             }
 
+            string? imagePath = null;
+
+            if (model.ImageFile != null)
+            {
+                string uploadsFolder = Path.Combine(_hostEnvironment.WebRootPath, "uploads");
+                Directory.CreateDirectory(uploadsFolder);
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ImageFile.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await model.ImageFile.CopyToAsync(fileStream);
+                }
+
+                imagePath = "/uploads/" + uniqueFileName;
+            }
+
             var user = new ApplicationUser
             {
                 UserName = model.Email,
                 Email = model.Email,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
-                PhoneNumber = model.PhoneNumber
+                PhoneNumber = model.PhoneNumber,
+                ImageUrl = imagePath
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
@@ -83,37 +104,40 @@ namespace CrudMVC.Controllers.Authentication
         [HttpPost]
         public async Task<IActionResult> Login(LoginVM model)
         {
-            try
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var user = await _userManager.FindByEmailAsync(model.Email);
+
+            if (user == null)
             {
-                if (ModelState.IsValid)
-                {
-                    ApplicationUser checkEmail = await _userManager.FindByEmailAsync(model.Email);
-                    if (checkEmail == null)
-                    {
-                        ModelState.AddModelError("Email", "Email does not exist");
-                        return View(model);
-                    }
-                    if (await _userManager.CheckPasswordAsync(checkEmail, model.Password) == false)
-                    {
-                        ModelState.AddModelError(string.Empty, "Incorrect password"); 
-                    }
-                }
-                var result = await _signInManager.PasswordSignInAsync(model.Email,model.Password, model.RememberMe, lockoutOnFailure: false);
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-                ModelState.AddModelError(string.Empty, "Invalid login attempt");
+                ModelState.AddModelError("Email", "Email does not exist");
+                return View(model);
             }
-            catch (Exception)
+
+            var result = await _signInManager.PasswordSignInAsync(
+                user.UserName,
+                model.Password,
+                model.RememberMe,
+                lockoutOnFailure: false
+            );
+
+            if (result.Succeeded)
             {
-                throw;
+                HttpContext.Session.SetString("UserId", user.Id);
+                HttpContext.Session.SetString("FullName", user.FirstName + " " + user.LastName);
+                HttpContext.Session.SetString("UserImage", user.ImageUrl ?? "");
+
+                return RedirectToAction("Index", "Home");
             }
+
+            ModelState.AddModelError("", "Invalid login attempt");
             return View(model);
         }
 
         public async Task<IActionResult> Logout()
         {
+            HttpContext.Session.Clear();
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login", "Account");
         }

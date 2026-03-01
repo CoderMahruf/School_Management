@@ -11,9 +11,10 @@
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Class</th>
+            <th>Roll</th>
             <th>Phone</th>
         </tr>
     </thead>
@@ -23,12 +24,14 @@
             foreach (var student in Model)
             {
                 <tr>
-                    <td>@student.Id</td>
                     <td>@student.Name</td>
                     <td>@student.Email</td>
+                    <td>@student.Class?.Name</td>
+                    <td>@student.RollNumber</td>
                     <td>@student.Phone</td>
                     <td>
-                        <a asp-action="Edit" asp-controller="Students" asp-route-id="@student.Id" class="btn btn-sm> btn-warning">Edit</a>
+                        <a asp-action="Edit" asp-controller="Students" asp-route-id="@student.Id" class="btn btn-sm btn-warning">Edit</a>
+
                     </td>
                 </tr>
             }

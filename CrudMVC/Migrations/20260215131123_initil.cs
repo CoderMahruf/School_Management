@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CrudMVC.Migrations
 {
     /// <inheritdoc />
-    public partial class initil : Migration
+    public partial class Initil : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

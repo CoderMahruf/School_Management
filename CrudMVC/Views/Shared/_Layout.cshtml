@@ -3,6 +3,13 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    var name = HttpContextAccessor.HttpContext.Session.GetString("FullName");
+    var image = HttpContextAccessor.HttpContext.Session.GetString("UserImage");
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +29,7 @@
             <div class="container">
 
                 <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                    CrudMVC
+                    Student Management
                 </a>
 
                 <button class="navbar-toggler" type="button"
@@ -49,7 +56,7 @@
                         {
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="Students" asp-action="List">
-                                    Students
+                                    Students CRUD
                                 </a>
                             </li>
                         }

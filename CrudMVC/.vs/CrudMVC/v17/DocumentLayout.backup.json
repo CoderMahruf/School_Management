@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\USER\\Downloads\\CrudMVC\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|c:\\users\\user\\downloads\\crudmvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|c:\\users\\user\\downloads\\crudmvc\\services\\iemailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{27FD8CF8-75B8-48F4-9D78-AC857A2D8753}|CrudMVC.csproj|solutionrelative:services\\iemailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -54,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,7 +66,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\USER\\Downloads\\CrudMVC\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\USER\\Downloads\\CrudMVC\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-19T07:17:46.931Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "ResetPassword.cshtml",
               "DocumentMoniker": "C:\\Users\\USER\\Downloads\\CrudMVC\\Views\\Account\\ResetPassword.cshtml",
               "RelativeDocumentMoniker": "Views\\Account\\ResetPassword.cshtml",
@@ -74,7 +91,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ForgetPasswordConfirmation.cshtml",
               "DocumentMoniker": "C:\\Users\\USER\\Downloads\\CrudMVC\\Views\\Account\\ForgetPasswordConfirmation.cshtml",
               "RelativeDocumentMoniker": "Views\\Account\\ForgetPasswordConfirmation.cshtml",
@@ -86,7 +103,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ForgetPassword.cshtml",
               "DocumentMoniker": "C:\\Users\\USER\\Downloads\\CrudMVC\\Views\\Account\\ForgetPassword.cshtml",
               "RelativeDocumentMoniker": "Views\\Account\\ForgetPassword.cshtml",
@@ -98,7 +115,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\Users\\USER\\Downloads\\CrudMVC\\Controllers\\Authentication\\AccountController.cs",
               "RelativeDocumentMoniker": "Controllers\\Authentication\\AccountController.cs",
@@ -110,7 +127,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "EmailSender.cs",
               "DocumentMoniker": "C:\\Users\\USER\\Downloads\\CrudMVC\\Services\\EmailSender.cs",
               "RelativeDocumentMoniker": "Services\\EmailSender.cs",
@@ -122,7 +139,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "IEmailSender.cs",
               "DocumentMoniker": "C:\\Users\\USER\\Downloads\\CrudMVC\\Services\\IEmailSender.cs",
               "RelativeDocumentMoniker": "Services\\IEmailSender.cs",
@@ -135,7 +152,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ResponseVM.cs",
               "DocumentMoniker": "C:\\Users\\USER\\Downloads\\CrudMVC\\Models\\ResponseVM.cs",
               "RelativeDocumentMoniker": "Models\\ResponseVM.cs",
@@ -147,7 +164,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\USER\\Downloads\\CrudMVC\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -159,7 +176,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Login.cshtml",
               "DocumentMoniker": "C:\\Users\\USER\\Downloads\\CrudMVC\\Views\\Account\\Login.cshtml",
               "RelativeDocumentMoniker": "Views\\Account\\Login.cshtml",
@@ -171,7 +188,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Student.cs",
               "DocumentMoniker": "C:\\Users\\USER\\Downloads\\CrudMVC\\Models\\Entities\\Student.cs",
               "RelativeDocumentMoniker": "Models\\Entities\\Student.cs",
@@ -183,7 +200,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "StudentsController.cs",
               "DocumentMoniker": "C:\\Users\\USER\\Downloads\\CrudMVC\\Controllers\\StudentsController.cs",
               "RelativeDocumentMoniker": "Controllers\\StudentsController.cs",

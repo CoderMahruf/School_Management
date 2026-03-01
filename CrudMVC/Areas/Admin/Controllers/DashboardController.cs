@@ -11,43 +11,36 @@ namespace CrudMVC.Areas.Admin.Controllers
     public class DashboardController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _dbContext;
 
-        public DashboardController(UserManager<ApplicationUser> userManager, ApplicationDbContext context)
+        public DashboardController(UserManager<ApplicationUser> userManager, ApplicationDbContext dbContext)
         {
             _userManager = userManager;
-            _context = context;
+            _dbContext = dbContext;
         }
 
         public async Task<IActionResult> Index()
         {
-            var users = _userManager.Users.ToList();
-
-            var totalUsers = users.Count;
-            var totalStudents = 0;
-            var totalTeachers = 0;
-            var totalAdmins = 0;
-
-            foreach (var user in users)
-            {
-                var roles = await _userManager.GetRolesAsync(user);
-
-                if (roles.Contains("Student"))
-                    totalStudents++;
-
-                if (roles.Contains("Teacher"))
-                    totalTeachers++;
-
-                if (roles.Contains("Admin"))
-                    totalAdmins++;
-            }
-
-            ViewBag.TotalUsers = totalUsers;
-            ViewBag.TotalStudents = totalStudents;
-            ViewBag.TotalTeachers = totalTeachers;
-            ViewBag.TotalAdmins = totalAdmins;
-
             return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetUserCounts()
+        {
+            var adminUsers = await _userManager.GetUsersInRoleAsync("Admin");
+            var teacherUsers = await _userManager.GetUsersInRoleAsync("Teacher");
+            var studentUsers = await _userManager.GetUsersInRoleAsync("Student");
+            var allUsers = _dbContext.Users.ToList();
+
+            var result = new
+            {
+                AdminCount = adminUsers.Count,
+                TeacherCount = teacherUsers.Count,
+                StudentCount = studentUsers.Count,
+                TotalUsers = allUsers.Count
+            };
+
+            return Json(result);
         }
     }
 }

@@ -32,14 +32,11 @@
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box">
                         <span class="info-box-icon text-bg-primary shadow-sm">
-                            <i class="bi bi-gear-fill"></i>
+                            <i class="bi bi-person-fill"></i>
                         </span>
                         <div class="info-box-content">
-                            <span class="info-box-text">CPU Traffic</span>
-                            <span class="info-box-number">
-                                10
-                                <small>%</small>
-                            </span>
+                            <span class="info-box-text">Total Admin</span>
+                            <span class="info-box-number" id="adminCount">0</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -49,11 +46,11 @@
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box">
                         <span class="info-box-icon text-bg-danger shadow-sm">
-                            <i class="bi bi-hand-thumbs-up-fill"></i>
+                            <i class="bi bi-person-badge-fill"></i>
                         </span>
                         <div class="info-box-content">
-                            <span class="info-box-text">Likes</span>
-                            <span class="info-box-number">41,410</span>
+                            <span class="info-box-text">Teachers</span>
+                            <span class="info-box-number" id="teacherCount">0</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -65,11 +62,11 @@
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box">
                         <span class="info-box-icon text-bg-success shadow-sm">
-                            <i class="bi bi-cart-fill"></i>
+                            <i class="bi bi-mortarboard-fill"></i>
                         </span>
                         <div class="info-box-content">
-                            <span class="info-box-text">Sales</span>
-                            <span class="info-box-number">760</span>
+                            <span class="info-box-text">Students</span>
+                            <span class="info-box-number" id="studentCount">0</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -82,8 +79,8 @@
                             <i class="bi bi-people-fill"></i>
                         </span>
                         <div class="info-box-content">
-                            <span class="info-box-text">New Members</span>
-                            <span class="info-box-number">2,000</span>
+                            <span class="info-box-text">All Users</span>
+                            <span class="info-box-number" id="totalUsers">0</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -319,5 +316,25 @@
         <!--end::Container-->
     </div>
     <!--end::App Content-->
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: '@Url.Action("GetUserCounts", "Dashboard", new { area = "Admin" })',
+                type: 'GET',
+                success: function(data) {
+                    $('#adminCount').text(data.adminCount);
+                    $('#teacherCount').text(data.teacherCount);
+                    $('#studentCount').text(data.studentCount);
+                    $('#totalUsers').text(data.totalUsers);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching user counts:', error);
+                }
+            });
+        });
+    </script>
 </main>
 <!--end::App Main-->

@@ -4,6 +4,7 @@ using CrudMVC.Models.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace CrudMVC.Controllers
@@ -20,8 +21,14 @@ namespace CrudMVC.Controllers
         }
 
         [HttpGet]
-        public IActionResult Add()
+        public async Task<IActionResult> Add()
         {
+            ViewBag.Classes = new SelectList(
+                await _dbContext.Classes.ToListAsync(),
+                "Id",
+                "Name"
+            );
+
             return View();
         }
         [HttpPost]
@@ -33,35 +40,60 @@ namespace CrudMVC.Controllers
             if (existingStudent != null)
             {
                 ModelState.AddModelError("Email", "A student with this email already exists.");
+                ViewBag.Classes = new SelectList(
+                    await _dbContext.Classes.ToListAsync(),
+                    "Id",
+                    "Name"
+                );
                 return View(viewModel);
             }
             var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return Unauthorized();
+            }
             var student = new Student
             {
                 Id = Guid.NewGuid(),
                 UserId = user.Id,
                 Name = viewModel.Name,
                 Email = viewModel.Email,
-                Phone = viewModel.Phone
+                Phone = viewModel.Phone,
+                ClassId = viewModel.ClassId,
+                RollNumber = viewModel.RollNumber
+
             };
 
             await _dbContext.Students.AddAsync(student);
             await _dbContext.SaveChangesAsync();
 
-            return RedirectToAction("Add");
+            return RedirectToAction("List");
         }
 
         [HttpGet]
         public async Task<IActionResult> List()
         {
-            var students = await _dbContext.Students.ToListAsync();
+            var students = await _dbContext.Students.Include(s => s.Class).ToListAsync();
             return View(students);
         }
 
         [HttpGet]
         public async Task<IActionResult> Edit(Guid id)
         {
-            var student = await _dbContext.Students.FindAsync(id);
+            var student = await _dbContext.Students
+                .Include(s => s.Class)
+                .FirstOrDefaultAsync(s => s.Id == id);
+
+            if (student == null) return NotFound();
+
+            // Populate dropdown and preselect current class
+            ViewBag.Classes = new SelectList(
+                await _dbContext.Classes.ToListAsync(),
+                "Id",
+                "Name",
+                student.ClassId
+            );
+
             return View(student);
         }
 
@@ -74,6 +106,8 @@ namespace CrudMVC.Controllers
                 student.Name = viewModel.Name;
                 student.Email = viewModel.Email;
                 student.Phone = viewModel.Phone;
+                student.ClassId = viewModel.ClassId;
+                student.RollNumber = viewModel.RollNumber;
                 await _dbContext.SaveChangesAsync();
             }
             return RedirectToAction("List");

@@ -8,6 +8,7 @@ namespace CrudMVC.Models
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
+        public IFormFile? ImageFile { get; set; }
         [EmailAddress]
         [Required(ErrorMessage = "Please enter Email")]
         public string Email { get; set; }
