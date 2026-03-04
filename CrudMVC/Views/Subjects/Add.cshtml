@@ -1,0 +1,20 @@
+﻿@model CrudMVC.Models.Entities.Subject
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Add" method="post">
+    <div class="form-group mt-2">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mt-2">
+        <label asp-for="SubjectCode"></label>
+        <input asp-for="SubjectCode" class="form-control" />
+        <span asp-validation-for="SubjectCode" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3">Save</button>
+    <a asp-action="List" class="btn btn-secondary mt-3">Back</a>
+</form>

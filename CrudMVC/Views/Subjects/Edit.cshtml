@@ -1,0 +1,32 @@
+﻿@model CrudMVC.Models.SubjectEditVM
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Edit" method="post">
+    @Html.AntiForgeryToken()
+
+    <!-- Hidden Id -->
+    <input type="hidden" asp-for="Id" />
+
+    <!-- Name field -->
+    <div class="form-group mt-2">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <!-- SubjectCode field -->
+    <div class="form-group mt-2">
+        <label asp-for="SubjectCode"></label>
+        <input asp-for="SubjectCode" class="form-control" />
+        <span asp-validation-for="SubjectCode" class="text-danger"></span>
+    </div>
+
+    <!-- Buttons -->
+    <button type="submit" class="btn btn-success mt-3">Save Changes</button>
+    <a asp-action="List" class="btn btn-secondary mt-3">Back</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

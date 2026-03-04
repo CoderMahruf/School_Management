@@ -1,0 +1,28 @@
+﻿@model CrudMVC.Models.ClassCreateVM
+
+<h2>Add Class</h2>
+
+<form asp-action="Add" method="post">
+    <div class="form-group mt-2">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mt-3">
+        <label>Select Subjects</label>
+
+        @foreach (var subject in Model.Subjects)
+        {
+            <div>
+                <input type="checkbox"
+                       name="SelectedSubjectIds"
+                       value="@subject.Id" />
+                @subject.Name
+            </div>
+        }
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3">Save</button>
+    <a asp-action="List" class="btn btn-secondary mt-3">Back</a>
+</form>

@@ -14,116 +14,190 @@ namespace CrudMVC.Controllers
     {
         private readonly ApplicationDbContext _dbContext;
         private readonly UserManager<ApplicationUser> _userManager;
-        public StudentsController(ApplicationDbContext dbContext, UserManager<ApplicationUser> userManager)
+
+        public StudentsController(
+            ApplicationDbContext dbContext,
+            UserManager<ApplicationUser> userManager)
         {
-            this._dbContext = dbContext;
-            this._userManager = userManager;
+            _dbContext = dbContext;
+            _userManager = userManager;
         }
+
 
         [HttpGet]
         public async Task<IActionResult> Add()
         {
-            ViewBag.Classes = new SelectList(
-                await _dbContext.Classes.ToListAsync(),
-                "Id",
-                "Name"
-            );
-
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> Add(AddStudentViewModel viewModel)
-        {
-            var existingStudent = await _dbContext.Students
-                .FirstOrDefaultAsync(s => s.Email == viewModel.Email);
-
-            if (existingStudent != null)
+            var model = new AddStudentViewModel
             {
-                ModelState.AddModelError("Email", "A student with this email already exists.");
-                ViewBag.Classes = new SelectList(
-                    await _dbContext.Classes.ToListAsync(),
-                    "Id",
-                    "Name"
-                );
-                return View(viewModel);
-            }
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return Unauthorized();
-            }
-            var student = new Student
-            {
-                Id = Guid.NewGuid(),
-                UserId = user.Id,
-                Name = viewModel.Name,
-                Email = viewModel.Email,
-                Phone = viewModel.Phone,
-                ClassId = viewModel.ClassId,
-                RollNumber = viewModel.RollNumber
-
+                Classes = await _dbContext.Classes
+                    .Select(c => new SelectListItem
+                    {
+                        Value = c.Id.ToString(),
+                        Text = c.Name
+                    }).ToListAsync()
             };
 
-            await _dbContext.Students.AddAsync(student);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Add(AddStudentViewModel model)
+        {
+            // Repopulate dropdown
+            model.Classes = await _dbContext.Classes
+                .Select(c => new SelectListItem
+                {
+                    Value = c.Id.ToString(),
+                    Text = c.Name
+                }).ToListAsync();
+
+            if (!ModelState.IsValid)
+                return View(model);
+
+            if (model.ClassId == null)
+            {
+                ModelState.AddModelError("", "Class is required.");
+                return View(model);
+            }
+
+            // Get subjects assigned to selected class
+            var classSubjects = await _dbContext.ClassSubjects
+                .Where(cs => cs.ClassId == model.ClassId.Value)
+                .ToListAsync();
+
+            var student = new Student
+            {
+                Name = model.Name,
+                Email = model.Email,
+                Phone = model.Phone,
+                RollNumber = model.RollNumber,
+                ClassId = model.ClassId.Value,
+                UserId = _userManager.GetUserId(User),
+
+                // Auto-assign subjects
+                StudentSubjects = classSubjects
+                    .Select(cs => new StudentSubject
+                    {
+                        SubjectId = cs.SubjectId
+                    }).ToList()
+            };
+
+            _dbContext.Students.Add(student);
             await _dbContext.SaveChangesAsync();
 
-            return RedirectToAction("List");
+            return RedirectToAction(nameof(List));
         }
+
 
         [HttpGet]
         public async Task<IActionResult> List()
         {
-            var students = await _dbContext.Students.Include(s => s.Class).ToListAsync();
+            var students = await _dbContext.Students
+                .Include(s => s.Class)
+                .ToListAsync();
+
             return View(students);
         }
 
+      
+
         [HttpGet]
-        public async Task<IActionResult> Edit(Guid id)
+        public async Task<IActionResult> Edit(int id)
         {
             var student = await _dbContext.Students
-                .Include(s => s.Class)
+                .Include(s => s.StudentSubjects)
                 .FirstOrDefaultAsync(s => s.Id == id);
 
-            if (student == null) return NotFound();
+            if (student == null)
+                return NotFound();
 
-            // Populate dropdown and preselect current class
-            ViewBag.Classes = new SelectList(
-                await _dbContext.Classes.ToListAsync(),
-                "Id",
-                "Name",
-                student.ClassId
-            );
-
-            return View(student);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Edit(Student viewModel)
-        {
-            var student = await _dbContext.Students.FindAsync(viewModel.Id);
-            if (student is not null)
+            var model = new EditStudentVM
             {
-                student.Name = viewModel.Name;
-                student.Email = viewModel.Email;
-                student.Phone = viewModel.Phone;
-                student.ClassId = viewModel.ClassId;
-                student.RollNumber = viewModel.RollNumber;
-                await _dbContext.SaveChangesAsync();
-            }
-            return RedirectToAction("List");
+                Id = student.Id,
+                Name = student.Name,
+                Email = student.Email,
+                Phone = student.Phone,
+                RollNumber = student.RollNumber,
+                ClassId = student.ClassId,
+
+                Classes = await _dbContext.Classes
+                    .Select(c => new SelectListItem
+                    {
+                        Value = c.Id.ToString(),
+                        Text = c.Name
+                    }).ToListAsync()
+            };
+
+            return View(model);
         }
+
         [HttpPost]
-        public async Task<IActionResult> Delete(Guid id)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(EditStudentVM model)
         {
-            var student = await _dbContext.Students.FindAsync(id);
+            model.Classes = await _dbContext.Classes
+                .Select(c => new SelectListItem
+                {
+                    Value = c.Id.ToString(),
+                    Text = c.Name
+                }).ToListAsync();
+
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var student = await _dbContext.Students
+                .Include(s => s.StudentSubjects)
+                .FirstOrDefaultAsync(s => s.Id == model.Id);
+
+            if (student == null)
+                return NotFound();
+
+            // Update basic fields
+            student.Name = model.Name;
+            student.Email = model.Email;
+            student.Phone = model.Phone;
+            student.RollNumber = model.RollNumber;
+            student.ClassId = model.ClassId;
+
+            // Remove old subject mappings
+            _dbContext.StudentSubjects.RemoveRange(student.StudentSubjects);
+
+            // Get new class subjects
+            var classSubjects = await _dbContext.ClassSubjects
+                .Where(cs => cs.ClassId == model.ClassId)
+                .ToListAsync();
+
+            // Re-assign subjects automatically
+            student.StudentSubjects = classSubjects
+                .Select(cs => new StudentSubject
+                {
+                    StudentId = student.Id,
+                    SubjectId = cs.SubjectId
+                }).ToList();
+
+            await _dbContext.SaveChangesAsync();
+
+            return RedirectToAction(nameof(List));
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var student = await _dbContext.Students
+                .Include(s => s.StudentSubjects)
+                .FirstOrDefaultAsync(s => s.Id == id);
 
             if (student != null)
             {
+                _dbContext.StudentSubjects.RemoveRange(student.StudentSubjects);
                 _dbContext.Students.Remove(student);
                 await _dbContext.SaveChangesAsync();
             }
 
-            return RedirectToAction("List");
+            return RedirectToAction(nameof(List));
         }
     }
 }

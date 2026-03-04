@@ -10,8 +10,28 @@ namespace CrudMVC.Data
         {
             
         }
-        public DbSet<Class> Classes { get; set; }
         public DbSet<Student> Students { get; set; }
+        public DbSet<Class> Classes { get; set; }
         public DbSet<Subject> Subjects { get; set; }
+        public DbSet<ClassSubject> ClassSubjects { get; set; }
+        public DbSet<StudentSubject> StudentSubjects { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<ClassSubject>()
+                .HasKey(cs => new { cs.ClassId, cs.SubjectId });
+
+            modelBuilder.Entity<ClassSubject>()
+                .HasOne(cs => cs.Class)
+                .WithMany(c => c.ClassSubjects)
+                .HasForeignKey(cs => cs.ClassId);
+
+            modelBuilder.Entity<ClassSubject>()
+                .HasOne(cs => cs.Subject)
+                .WithMany(s => s.ClassSubjects)
+                .HasForeignKey(cs => cs.SubjectId);
+        }
     }
 }

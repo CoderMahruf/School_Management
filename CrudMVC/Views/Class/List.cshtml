@@ -1,0 +1,32 @@
+﻿@model IEnumerable<CrudMVC.Models.Entities.Class>
+
+<h2>Class</h2>
+<a class="btn btn-primary" asp-action="Add">Add New Class</a>
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th>Classes</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.Name</td>
+                <td>
+                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@s.Id">Edit</a>
+
+                    <!-- Delete form -->
+                    <form asp-action="Delete" method="post" asp-route-id="@s.Id" style="display:inline;">
+                        <button type="submit" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure you want to delete this subject?');">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

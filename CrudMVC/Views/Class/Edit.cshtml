@@ -1,0 +1,37 @@
+﻿@model CrudMVC.Models.ClassEditVM
+
+<h2>Edit Class</h2>
+
+<form asp-action="Edit" method="post">
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group mt-2">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mt-3">
+        <label>Select Subjects</label>
+
+        @foreach (var subject in Model.Subjects)
+        {
+            <div>
+                <input type="checkbox"
+                       name="SelectedSubjectIds"
+                       value="@subject.Id"
+                       @(Model.SelectedSubjectIds.Contains(subject.Id) ? "checked" : "") />
+                @subject.Name
+            </div>
+        }
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3">Save Changes</button>
+    <a asp-action="List" class="btn btn-secondary mt-3">Back</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

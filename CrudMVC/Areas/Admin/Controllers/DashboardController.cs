@@ -3,6 +3,7 @@ using CrudMVC.Models.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CrudMVC.Areas.Admin.Controllers
 {
@@ -29,14 +30,14 @@ namespace CrudMVC.Areas.Admin.Controllers
         {
             var adminUsers = await _userManager.GetUsersInRoleAsync("Admin");
             var teacherUsers = await _userManager.GetUsersInRoleAsync("Teacher");
-            var studentUsers = await _userManager.GetUsersInRoleAsync("Student");
+            var studentUsers = await _dbContext.Students.CountAsync();
             var allUsers = _dbContext.Users.ToList();
 
             var result = new
             {
                 AdminCount = adminUsers.Count,
                 TeacherCount = teacherUsers.Count,
-                StudentCount = studentUsers.Count,
+                StudentCount = studentUsers,
                 TotalUsers = allUsers.Count
             };
 

@@ -5,7 +5,7 @@ namespace CrudMVC.Models.Entities
 {
     public class Student
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public string UserId { get; set; }   
         public ApplicationUser User { get; set; }
@@ -17,8 +17,9 @@ namespace CrudMVC.Models.Entities
         public string Email { get; set; }
         public string Phone { get; set; }
 
-        public Guid ClassId { get; set; }
+        public int ClassId { get; set; }
         public Class Class { get; set; }
+        public ICollection<StudentSubject> StudentSubjects { get; set; }
 
     }
 }

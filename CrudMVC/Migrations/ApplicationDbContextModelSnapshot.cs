@@ -101,9 +101,11 @@ namespace CrudMVC.Migrations
 
             modelBuilder.Entity("CrudMVC.Models.Entities.Class", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -114,14 +116,31 @@ namespace CrudMVC.Migrations
                     b.ToTable("Classes");
                 });
 
+            modelBuilder.Entity("CrudMVC.Models.Entities.ClassSubject", b =>
+                {
+                    b.Property<int>("ClassId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ClassId", "SubjectId");
+
+                    b.HasIndex("SubjectId");
+
+                    b.ToTable("ClassSubjects");
+                });
+
             modelBuilder.Entity("CrudMVC.Models.Entities.Student", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("ClassId")
-                        .HasColumnType("uniqueidentifier");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ClassId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -152,6 +171,29 @@ namespace CrudMVC.Migrations
                     b.ToTable("Students");
                 });
 
+            modelBuilder.Entity("CrudMVC.Models.Entities.StudentSubject", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StudentId");
+
+                    b.HasIndex("SubjectId");
+
+                    b.ToTable("StudentSubjects");
+                });
+
             modelBuilder.Entity("CrudMVC.Models.Entities.Subject", b =>
                 {
                     b.Property<int>("Id")
@@ -161,6 +203,11 @@ namespace CrudMVC.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("SubjectCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -302,10 +349,29 @@ namespace CrudMVC.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("CrudMVC.Models.Entities.ClassSubject", b =>
+                {
+                    b.HasOne("CrudMVC.Models.Entities.Class", "Class")
+                        .WithMany("ClassSubjects")
+                        .HasForeignKey("ClassId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CrudMVC.Models.Entities.Subject", "Subject")
+                        .WithMany("ClassSubjects")
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Class");
+
+                    b.Navigation("Subject");
+                });
+
             modelBuilder.Entity("CrudMVC.Models.Entities.Student", b =>
                 {
                     b.HasOne("CrudMVC.Models.Entities.Class", "Class")
-                        .WithMany("Students")
+                        .WithMany()
                         .HasForeignKey("ClassId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -319,6 +385,25 @@ namespace CrudMVC.Migrations
                     b.Navigation("Class");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("CrudMVC.Models.Entities.StudentSubject", b =>
+                {
+                    b.HasOne("CrudMVC.Models.Entities.Student", "Student")
+                        .WithMany("StudentSubjects")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CrudMVC.Models.Entities.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Student");
+
+                    b.Navigation("Subject");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -374,7 +459,17 @@ namespace CrudMVC.Migrations
 
             modelBuilder.Entity("CrudMVC.Models.Entities.Class", b =>
                 {
-                    b.Navigation("Students");
+                    b.Navigation("ClassSubjects");
+                });
+
+            modelBuilder.Entity("CrudMVC.Models.Entities.Student", b =>
+                {
+                    b.Navigation("StudentSubjects");
+                });
+
+            modelBuilder.Entity("CrudMVC.Models.Entities.Subject", b =>
+                {
+                    b.Navigation("ClassSubjects");
                 });
 #pragma warning restore 612, 618
         }
