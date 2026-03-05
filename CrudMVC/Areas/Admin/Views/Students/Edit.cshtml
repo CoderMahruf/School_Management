@@ -1,53 +1,76 @@
 ﻿@model EditStudentVM
 
-<h2>Edit Student</h2>
-
-<form asp-action="Edit" method="post">
-    @Html.AntiForgeryToken()
-    <input type="hidden" asp-for="Id" />
-
-    <div class="mb-3">
-        <label asp-for="Name" class="form-label"></label>
-        <input asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
+<main class="app-main">
+    <div class="app-content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6"><h3 class="mb-0">Edit Student</h3></div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-end">
+                        <li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item active">Edit Student</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="mb-3">
-        <label asp-for="Email" class="form-label"></label>
-        <input asp-for="Email" class="form-control" />
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
+    <div class="app-content">
+        <div class="container-fluid">
+            <div class="col-md-6 p-0">
+                <div class="card card-warning card-outline mb-2">
+                    <div class="card-header py-1">
+                        <div class="card-title">Student Info</div>
+                    </div>
 
-    <div class="mb-3">
-        <label asp-for="Phone" class="form-label"></label>
-        <input asp-for="Phone" class="form-control" />
-        <span asp-validation-for="Phone" class="text-danger"></span>
-    </div>
+                    <form asp-action="Edit" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" asp-for="Id" />
 
-    <div class="mb-3">
-        <label asp-for="RollNumber" class="form-label"></label>
-        <input asp-for="RollNumber" class="form-control" />
-        <span asp-validation-for="RollNumber" class="text-danger"></span>
-    </div>
+                        <div class="card-body py-2 px-3">
+                            <div class="mb-2">
+                                <label asp-for="Name" class="form-label small"></label>
+                                <input asp-for="Name" class="form-control form-control-sm" />
+                                <span asp-validation-for="Name" class="text-danger small"></span>
+                            </div>
 
-    <div class="mb-3">
-        <label asp-for="ClassId" class="form-label"></label>
-        <select asp-for="ClassId" class="form-select" asp-items="Model.Classes">
-            <option value="">-- Select Class --</option>
-        </select>
-        <span asp-validation-for="ClassId" class="text-danger"></span>
-    </div>
+                            <div class="mb-2">
+                                <label asp-for="Email" class="form-label small"></label>
+                                <input asp-for="Email" class="form-control form-control-sm" />
+                                <span asp-validation-for="Email" class="text-danger small"></span>
+                            </div>
 
-    <div class="mt-4 d-flex gap-2">
-        <button type="submit" class="btn btn-success">
-            Update
-        </button>
+                            <div class="mb-2">
+                                <label asp-for="Phone" class="form-label small"></label>
+                                <input asp-for="Phone" class="form-control form-control-sm" />
+                                <span asp-validation-for="Phone" class="text-danger small"></span>
+                            </div>
 
-        <a asp-action="List" class="btn btn-secondary">
-            Back
-        </a>
+                            <div class="mb-2">
+                                <label asp-for="RollNumber" class="form-label small"></label>
+                                <input asp-for="RollNumber" class="form-control form-control-sm" />
+                                <span asp-validation-for="RollNumber" class="text-danger small"></span>
+                            </div>
+
+                            <div class="mb-2">
+                                <label asp-for="ClassId" class="form-label small"></label>
+                                <select asp-for="ClassId" class="form-select form-select-sm" asp-items="Model.Classes">
+                                    <option value="">-- Select Class --</option>
+                                </select>
+                                <span asp-validation-for="ClassId" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="card-footer py-2 px-3 d-flex gap-2">
+                            <button type="submit" class="btn btn-success btn-sm">Update</button>
+                            <a asp-action="List" class="btn btn-secondary btn-sm">Back</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-</form>
+</main>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
