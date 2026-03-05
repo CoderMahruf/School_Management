@@ -13,13 +13,17 @@
             </span>
         </li>
 
-        <li class="nav-item">
-            <a class="btn btn-outline-danger btn-sm rounded-3"
-               asp-controller="Account"
-               asp-action="Logout">
+        <form asp-area=""
+              asp-controller="Account"
+              asp-action="Logout"
+              method="post"
+              class="d-inline">
+            @Html.AntiForgeryToken()
+            <button type="submit"
+                    class="btn btn-outline-danger btn-sm rounded-3">
                 <i class="fa fa-sign-out me-1"></i> Logout
-            </a>
-        </li>
+            </button>
+        </form>
     }
     else
     {

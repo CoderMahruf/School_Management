@@ -4,8 +4,9 @@ using CrudMVC.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace CrudMVC.Controllers
+namespace CrudMVC.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class ClassController : Controller
     {
         private readonly ApplicationDbContext _dbContext;

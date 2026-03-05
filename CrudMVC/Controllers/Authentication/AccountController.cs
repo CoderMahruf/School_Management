@@ -135,11 +135,13 @@ namespace CrudMVC.Controllers.Authentication
             return View(model);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
             HttpContext.Session.Clear();
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("Login", "Account",new {area = ""});
         }
         [AllowAnonymous]
         public async Task<IActionResult> ForgetPassword()

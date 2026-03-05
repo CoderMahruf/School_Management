@@ -7,8 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
-namespace CrudMVC.Controllers
+namespace CrudMVC.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     [Authorize(Roles = "Admin,Teacher")]
     public class StudentsController : Controller
     {

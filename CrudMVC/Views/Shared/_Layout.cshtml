@@ -51,32 +51,7 @@
                             </a>
                         </li>
 
-                        <!-- Only Teacher can see Student List -->
-                        @if (User.IsInRole("Admin") || User.IsInRole("Teacher"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Students" asp-action="List">
-                                    Students ADD
-                                </a>
-                            </li>
-                        }
-                        @if (User.IsInRole("Admin") || User.IsInRole("Teacher"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Subjects" asp-action="List">
-                                    Subjects ADD
-                                </a>
-                            </li>   
-                        }
-                        @if (User.IsInRole("Admin") || User.IsInRole("Teacher"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Class" asp-action="List">
-                                    Classes ADD
-                                </a>
-                            </li>   
-                        }
-                            @if (User.IsInRole("Admin"))
+                        @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link"
