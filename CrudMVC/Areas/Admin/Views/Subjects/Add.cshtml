@@ -1,20 +1,68 @@
 ﻿@model CrudMVC.Models.Entities.Subject
 
-<h2>@ViewData["Title"]</h2>
-
-<form asp-action="Add" method="post">
-    <div class="form-group mt-2">
-        <label asp-for="Name"></label>
-        <input asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
+<main class="app-main">
+    <!-- Page Header -->
+    <div class="app-content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3 class="mb-0">Add Subject</h3>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-end">
+                        <li class="breadcrumb-item">
+                            <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a asp-action="List">Subjects</a>
+                        </li>
+                        <li class="breadcrumb-item active">Add Subject</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="form-group mt-2">
-        <label asp-for="SubjectCode"></label>
-        <input asp-for="SubjectCode" class="form-control" />
-        <span asp-validation-for="SubjectCode" class="text-danger"></span>
-    </div>
+    <!-- Page Content -->
+    <div class="app-content">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
 
-    <button type="submit" class="btn btn-success mt-3">Save</button>
-    <a asp-action="List" class="btn btn-secondary mt-3">Back</a>
-</form>
+                    <div class="card card-info card-outline mb-4">
+                        <div class="card-body p-4">
+
+                            <form asp-action="Add" method="post">
+                                @Html.AntiForgeryToken()
+
+                                <div class="mb-3">
+                                    <label asp-for="Name" class="form-label"></label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="SubjectCode" class="form-label"></label>
+                                    <input asp-for="SubjectCode" class="form-control" />
+                                    <span asp-validation-for="SubjectCode" class="text-danger"></span>
+                                </div>
+
+                                <div class="d-flex justify-content-end gap-2 mt-4">
+                                    <a asp-action="List" class="btn btn-secondary">Back</a>
+                                    <button type="submit" class="btn btn-success">Save</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
