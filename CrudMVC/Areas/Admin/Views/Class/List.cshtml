@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<CrudMVC.Models.Entities.Class>
 
 <main class="app-main">
+
     <!-- Page Header -->
     <div class="app-content-header">
         <div class="container-fluid">
@@ -10,7 +11,9 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-end">
-                        <li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item">
+                            <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
                         <li class="breadcrumb-item active">Classes</li>
                     </ol>
                 </div>
@@ -33,35 +36,61 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-sm mb-0">
                                     <thead>
-                                        <tr>
+                                        <tr class="text-center">
                                             <th>Class Name</th>
-                                            <th class="text-end">Actions</th>
+                                            <th>Subjects</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if (Model != null && Model.Any())
-                                        {
-                                            foreach (var cls in Model)
-                                            {
-                                                <tr>
-                                                    <td>@cls.Name</td>
-                                                    <td class="d-flex justify-content-end gap-1">
-                                                        <a asp-action="Edit" asp-route-id="@cls.Id" class="btn btn-sm btn-warning">Edit</a>
-
-                                                        <form asp-action="Delete" method="post" style="display:inline;"
-                                                              onsubmit="return confirm('Are you sure you want to delete this class?');">
-                                                            @Html.AntiForgeryToken()
-                                                            <input type="hidden" name="id" value="@cls.Id" />
-                                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                            }
-                                        }
-                                        else
+                                        @foreach (var cls in Model)
                                         {
                                             <tr>
-                                                <td colspan="2" class="text-center">No Classes Found</td>
+                                                <!-- Class Name Column -->
+                                                <td>
+                                                    <input type="text"
+                                                           name="name"
+                                                           form="form-@cls.Id"
+                                                           value="@cls.Name"
+                                                           class="form-control form-control-sm" />
+                                                </td>
+
+                                                <!-- Subjects Column -->
+                                                <td>
+                                                    <form id="form-@cls.Id" asp-action="UpdateClass" method="post">
+                                                        @Html.AntiForgeryToken()
+                                                        <input type="hidden" name="id" value="@cls.Id" />
+
+                                                        @foreach (var subject in ViewBag.Subjects)
+                                                        {
+                                                            bool isChecked = cls.ClassSubjects.Any(cs => cs.SubjectId == subject.Id);
+
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input"
+                                                                       type="checkbox"
+                                                                       name="selectedSubjectIds"
+                                                                       value="@subject.Id"
+                                                                       @(isChecked ? "checked" : "") />
+                                                                <label class="form-check-label">@subject.Name</label>
+                                                            </div>
+                                                        }
+                                                    </form>
+                                                </td>
+
+                                                <!-- Actions Column -->
+                                                <td class="text-end">
+                                                    <div class="d-flex justify-content-end gap-2">
+                                                        <!-- Save Button -->
+                                                        <button type="submit" form="form-@cls.Id" class="btn btn-success btn-sm">Save</button>
+
+                                                        <!-- Delete Button -->
+                                                        <form asp-action="Delete" method="post" class="d-inline" onsubmit="return confirm('Delete this class?');">
+                                                            @Html.AntiForgeryToken()
+                                                            <input type="hidden" name="id" value="@cls.Id" />
+                                                            <button class="btn btn-danger btn-sm">Delete</button>
+                                                        </form>
+                                                    </div>
+                                                </td>
                                             </tr>
                                         }
                                     </tbody>
