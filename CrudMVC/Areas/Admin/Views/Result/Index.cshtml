@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Result Entry";
+}
+
+<main class="app-main">
+
+    <!-- Page Header -->
+    <div class="app-content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3 class="mb-0">Result Entry</h3>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-end">
+                        <li class="breadcrumb-item">
+                            <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active">Result</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="app-content">
+        <div class="container-fluid">
+
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+
+                    <div class="card card-info card-outline mb-4">
+                        <div class="card-body p-4">
+
+                            <form asp-action="LoadStudents" method="post">
+
+                                <div class="mb-3">
+                                    <label class="form-label">Select Class</label>
+
+                                    <select name="classId" class="form-select">
+                                        <option value="">Select Class</option>
+
+                                        @foreach (var c in ViewBag.Classes)
+                                        {
+                                            <option value="@c.Id">@c.Name</option>
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="d-flex justify-content-end gap-2 mt-4">
+                                    <button type="submit" class="btn btn-success">
+                                        Load Students
+                                    </button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</main>

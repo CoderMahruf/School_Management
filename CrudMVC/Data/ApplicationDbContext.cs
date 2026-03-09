@@ -15,6 +15,7 @@ namespace CrudMVC.Data
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<ClassSubject> ClassSubjects { get; set; }
         public DbSet<StudentSubject> StudentSubjects { get; set; }
+        public DbSet<Result> Results { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

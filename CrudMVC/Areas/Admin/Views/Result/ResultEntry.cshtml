@@ -1,0 +1,114 @@
+﻿@model ResultEntryVM
+
+<main class="app-main">
+
+    <!-- Page Header -->
+    <div class="app-content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3 class="mb-0">Result Entry</h3>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-end">
+                        <li class="breadcrumb-item">
+                            <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a asp-action="Index">Result</a>
+                        </li>
+                        <li class="breadcrumb-item active">Enter Marks</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="app-content">
+        <div class="container-fluid">
+
+            <div class="card card-info card-outline mb-4">
+
+                <div class="card-header">
+                    <h3 class="card-title">Student Marks Entry</h3>
+                </div>
+
+                <div class="card-body">
+
+                    <form asp-action="Save" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <input type="hidden" asp-for="ClassId" />
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-sm align-middle">
+
+                                <thead class="table-light">
+                                    <tr>
+                                        <th style="width:100px;">Roll</th>
+                                        <th style="width:200px;">Student Name</th>
+
+                                        @foreach (var subject in Model.Subjects)
+                                        {
+                                            <th>@subject.Name</th>
+                                        }
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @for (int i = 0; i < Model.Students.Count; i++)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Model.Students[i].RollNumber
+                                                <input type="hidden" name="Students[@i].StudentId" value="@Model.Students[i].StudentId" />
+                                            </td>
+
+                                            <td>@Model.Students[i].StudentName</td>
+
+                                            @for (int j = 0; j < Model.Subjects.Count; j++)
+                                            {
+                                                <td>
+                                                    <input type="number"
+                                                           name="Students[@i].SubjectMarks[@j].Marks"
+                                                           class="form-control form-control-sm"
+                                                           min="0"
+                                                           max="100"
+                                                           placeholder="0" />
+
+                                                    <input type="hidden"
+                                                           name="Students[@i].SubjectMarks[@j].SubjectId"
+                                                           value="@Model.Subjects[j].Id" />
+                                                </td>
+                                            }
+                                        </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                        <div class="d-flex justify-content-end mt-3">
+                            <button type="submit" class="btn btn-success">
+                                Save Result
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary ms-2">
+                                Back
+                            </a>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
