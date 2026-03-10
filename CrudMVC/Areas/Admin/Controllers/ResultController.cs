@@ -21,7 +21,7 @@ namespace CrudMVC.Areas.Admin.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> LoadStudents(int classId)
         {
             // Get students
@@ -109,7 +109,7 @@ namespace CrudMVC.Areas.Admin.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("LoadStudents", new { classId = model.ClassId });
         }
     }
 }

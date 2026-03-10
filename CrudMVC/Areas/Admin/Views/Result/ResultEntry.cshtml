@@ -36,7 +36,7 @@
 
                 <div class="card-body">
 
-                    <form asp-action="Save" method="post">
+                    <form asp-area="Admin" asp-controller="Result" asp-action="Save" method="post">
                         @Html.AntiForgeryToken()
 
                         <input type="hidden" asp-for="ClassId" />
