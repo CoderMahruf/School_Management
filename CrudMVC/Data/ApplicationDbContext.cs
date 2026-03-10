@@ -33,6 +33,12 @@ namespace CrudMVC.Data
                 .HasOne(cs => cs.Subject)
                 .WithMany(s => s.ClassSubjects)
                 .HasForeignKey(cs => cs.SubjectId);
+
+            modelBuilder.Entity<Result>()
+                .HasOne(r => r.Class)
+                .WithMany()
+                .HasForeignKey(r => r.ClassId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

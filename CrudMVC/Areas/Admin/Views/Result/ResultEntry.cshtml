@@ -63,6 +63,7 @@
                                             <td>
                                                 @Model.Students[i].RollNumber
                                                 <input type="hidden" name="Students[@i].StudentId" value="@Model.Students[i].StudentId" />
+                                                <input type="hidden" name="Students[@i].RollNumber" value="@Model.Students[i].RollNumber" />
                                             </td>
 
                                             <td>@Model.Students[i].StudentName</td>
@@ -72,10 +73,10 @@
                                                 <td>
                                                     <input type="number"
                                                            name="Students[@i].SubjectMarks[@j].Marks"
+                                                           value="@Model.Students[i].SubjectMarks[j].Marks"
                                                            class="form-control form-control-sm"
                                                            min="0"
-                                                           max="100"
-                                                           placeholder="0" />
+                                                           max="100" />
 
                                                     <input type="hidden"
                                                            name="Students[@i].SubjectMarks[@j].SubjectId"
