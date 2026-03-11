@@ -30,8 +30,18 @@
 
             <div class="card card-info card-outline mb-4">
 
-                <div class="card-header">
-                    <h3 class="card-title">Student Marks Entry</h3>
+                <div class="card-header d-flex justify-content-between align-items-center">
+
+                    <h3 class="card-title mb-0">Student Marks Entry</h3>
+
+                    <a asp-area="Admin"
+                       asp-controller="Result"
+                       asp-action="ClassResults"
+                       asp-route-classId="@Model.ClassId"
+                       class="btn btn-primary btn-sm">
+                        Student Result List
+                    </a>
+
                 </div>
 
                 <div class="card-body">

@@ -4,6 +4,7 @@ using CrudMVC.Models.Entities;
 using CrudMVC.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using QuestPDF;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +33,7 @@ builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
 
+Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
 
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())

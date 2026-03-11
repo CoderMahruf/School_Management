@@ -16,6 +16,11 @@ public class StudentResultVM
     public string StudentName { get; set; }
 
     public string RollNumber { get; set; }
+    public string ClassName { get; set; }
+
+    public int TotalMarks { get; set; } 
+
+    public string Grade { get; set; }
 
     public List<SubjectMarkVM> SubjectMarks { get; set; }
 }

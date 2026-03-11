@@ -1,0 +1,87 @@
+﻿@model List<StudentResultVM>
+
+<main class="app-main">
+
+    <!-- Page Header -->
+    <div class="app-content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3 class="mb-0">Class Result List</h3>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-end">
+                        <li class="breadcrumb-item">
+                            <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a asp-area="Admin" asp-controller="Result" asp-action="Index">Result</a>
+                        </li>
+                        <li class="breadcrumb-item active">Class Result List</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="app-content">
+        <div class="container-fluid">
+
+            <div class="card card-info card-outline">
+
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3 class="card-title mb-0">Students</h3>
+
+                    <a asp-area="Admin"
+                       asp-controller="Result"
+                       asp-action="Index"
+                       class="btn btn-secondary btn-sm">
+                        Back
+                    </a>
+                </div>
+
+                <div class="card-body">
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-sm align-middle">
+
+                            <thead class="table-light">
+                                <tr>
+                                    <th style="width:120px;">Roll</th>
+                                    <th>Student Name</th>
+                                    <th style="width:150px;">Marksheet</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var student in Model)
+                                {
+                                    <tr>
+                                        <td>@student.RollNumber</td>
+                                        <td>@student.StudentName</td>
+
+                                        <td>
+                                            <a asp-area="Admin"
+                                               asp-controller="Result"
+                                               asp-action="ExportMarksheet"
+                                               asp-route-studentId="@student.StudentId"
+                                               class="btn btn-primary btn-sm">
+                                                Export PDF
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</main>
