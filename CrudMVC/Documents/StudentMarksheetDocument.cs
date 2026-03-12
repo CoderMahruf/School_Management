@@ -27,7 +27,7 @@ public class StudentMarksheetDocument : IDocument
                 .Bold();
 
             // Content
-            page.Content().Column(col =>
+            page.Content().Column(col =>   
             {
                 col.Spacing(20);
 
@@ -113,14 +113,19 @@ public class StudentMarksheetDocument : IDocument
 
                         // Calculate grade for each subject
                         string grade;
-                        if (subject.Marks >= 90) grade = "A+";
-                        else if (subject.Marks >= 76) grade = "A";
-                        else if (subject.Marks >= 60) grade = "A-";
-                        else if (subject.Marks >= 50) grade = "B";
-                        else if (subject.Marks >= 34) grade = "C";
-                        else grade = "F";
+                        string gradeColor;
 
-                        table.Cell().Border(1).Padding(5).AlignCenter().Text(grade);
+                        if (subject.Marks >= 90) { grade = "A+"; gradeColor = Colors.Green.Darken1; }
+                        else if (subject.Marks >= 76) { grade = "A"; gradeColor = Colors.Green.Medium; }
+                        else if (subject.Marks >= 60) { grade = "A-"; gradeColor = Colors.Green.Lighten2; }
+                        else if (subject.Marks >= 50) { grade = "B"; gradeColor = Colors.Orange.Medium; }
+                        else if (subject.Marks >= 34) { grade = "C"; gradeColor = Colors.Orange.Lighten2; }
+                        else { grade = "F"; gradeColor = Colors.Red.Medium; }
+
+                        table.Cell().Border(1).Padding(5).AlignCenter()
+                            .Text(grade)
+                            .FontColor(gradeColor)
+                            .Bold();
                     }
 
                     // Total Marks Row
